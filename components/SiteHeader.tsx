@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 
-import { Show, SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/nextjs";
+import { OrganizationSwitcher, Show, SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/nextjs";
 import React from 'react';
 
 const SiteHeader = () => {
@@ -64,6 +64,10 @@ const SiteHeader = () => {
                 </Show>
                 
                 <Show when="signed-in">
+                    <OrganizationSwitcher
+                        afterCreateOrganizationUrl="/dashboard"
+                        afterSelectOrganizationUrl="/dashboard"
+                    />
                     {isLandingPage && (
                         <Button asChild size="sm">
                             <Link href="/dashboard">Dashboard</Link>
